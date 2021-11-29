@@ -1,0 +1,11 @@
+{% include 'header.html'%}
+<form method="post" action="/store" enctype="multipart/form-data">
+    <label for="txtNombre">Nombre: </label>
+    <input type="text" name="texNombre" id="txtNombre"></br>
+    <label for="txtCorreo">Correo electrónico: </label>
+    <input type="email" name="txtCorreo" id="txtCorreo"></br>
+    <label for="txtFoto">Foto de perfil: </label>
+    <input type="file" name="txtFoto" id="txtFoto"></br></br>
+    <input type="submit" value="agregar">
+</form>
+{% Include 'footer.html'%}
