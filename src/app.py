@@ -72,8 +72,7 @@ def update():
         datos = id
         cursor.execute(sql, datos)
         
-        fila = cursor.fetchall()
-        os.remove(os.path.join(app.config['CARPETA'], fila[0][0]))
+        nombreFoto = cursor.fetchone()[0]
 
         sql = "UPDATE `empleados` SET foto=%s WHERE id=%s;"
         datos = (newNombreFoto,id)

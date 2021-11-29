@@ -3,8 +3,7 @@ ramas
 mastermain          (crear esquema-venv-app.py)
     develop
         01-esquema-venv-app.py         
-        02-archivo-app.py
-        03-archivo-index-create-create.edit
-        04-archivo-footer-index
-        05-
+        02-archivo-index-create-edit
+        03-archivo-footer-header
+        04-
 
