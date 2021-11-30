@@ -1,15 +1,37 @@
 {% include 'header.html'%}
 {% for empleado in empleados %}
 <form method="post" action="/update" enctype="multipart/form-data">
-    <label for="txtID">Nombre: </label>
-    <input type="text" value={{empleado[0]}} name="texID" id="txtID">
-    <label for="txtNombre">Nombre: </label>
-    <input type="text" value={{empleado[1]}} name="texNombre" id="txtNombre"></br>
-    <label for="txtCorreo">Correo electrónico: </label>
-    <input type="email" value={{empleado[2]}} name="txtCorreo" id="txtCorreo"></br>
-    <label for="txtFoto">Foto de perfil:   {{empleado[3]}}   </label>
-    <input type="file" name="txtFoto" id="txtFoto"></br></br>
-    <input type="submit" value="agregar">
+    <div class="card">
+        card.<div class="card">
+            <div class="card-header">
+                Modificar empleado
+            </div>
+            <card class="body">
+                <p class="card text">
+                    <input hidden type="text" value={{empleado[0]}} name="texID" id="txtID">
+                    <div class="form-group">
+                        <label for="txtNombre">Nombre: </label>
+                        <input type="text" value={{empleado[1]}} name="texNombre" id="txtNombre">
+                        <input >
+                    </div>
+                    <div class="form-group">
+                        <label for="txtCorreo">Correo electrónico: </label>
+                        <input type="email" value={{empleado[2]}} name="txtCorreo" id="txtCorreo">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtFoto">Foto de perfil:{{empleado[3]}}</label>
+                        <img class="img-thumbnail" with="90" alt="foto de perfil" src="{{url_for('uploads',nombreFoto= empleado[3])}}">
+                        <input type="file" name="txtFoto" id="txtFoto">
+                    </div>
+                </p>
+            </card>
+        </div>
+    </div>
+    <div class="form-group">
+        <input class="btn btn-success" type="submit" value="Modificar empleado"/>
+        <a class="btn btn-primary" href="{{url_for('index')}}">Regresar</a>
+    </div>
+    
 </form>
 {% endfor %}
 {% include 'footer.html'%}
