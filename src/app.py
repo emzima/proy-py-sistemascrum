@@ -17,7 +17,7 @@ mysql.init_app(app)
 
 @app.route('/userpic/<path:nombreFoto>')
 def uploads(nombreFoto):
-    return
+    return send_from_directory(os.path.join('uploads'),nombreFoto)
 
 CARPETA = os.path.join('src/uploads')
 app.config['CARPETA'] = CARPETA
