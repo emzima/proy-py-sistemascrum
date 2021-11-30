@@ -1,5 +1,5 @@
 from flask import Flask
-from flask import render_template, request, redirect,url_for
+from flask import render_template, request, redirect, url_for, send_from_directory
 from flaskext.mysql import MySQL
 from datetime import datetime as dt
 import os
@@ -14,6 +14,10 @@ app.config['MYSQL_DATABASE_PASSWORD'] = '2589cami' #'25&9c4mi'
 app.config['MYSQL_DATABASE_DB'] = 'sistema'
 
 mysql.init_app(app)
+
+@app.route('/userpic/<path:nombreFoto>')
+def uploads(nombreFoto):
+    return
 
 CARPETA = os.path.join('src/uploads')
 app.config['CARPETA'] = CARPETA
