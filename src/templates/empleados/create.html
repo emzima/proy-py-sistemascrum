@@ -1,24 +1,23 @@
 {% include 'header.html' %}
-<form method="post" action="/store" enctype="multipart/form-data">
+<form method="POST" action="/store" enctype="multipart/form-data">
     <div class="card">
-        card.<div class="card">
+        <div class="card">
             <div class="card-header">
                 Alta empleado
             </div>
             <card class="body">
                 <p class="card text">
                     <div class="form-group">
-                        <label for="txtNombre">Nombre: </label>
-                        <input type="text" value={{empleado.nombre}} name="texNombre" id="txtNombre">
+                        <label for="textNombre">Nombre: </label>
+                        <input type="text" name="textNombre" id="textNombre">
                     </div>
                     <div class="form-group">
-                        <label for="txtCorreo">Correo electrónico: </label>
-                        <input type="email" value={{empleado.correo}} name="txtCorreo" id="txtCorreo">
+                        <label for="textCorreo">Correo electrónico: </label>
+                        <input type="email" name="textCorreo" id="textCorreo">
                     </div>
                     <div class="form-group">
-                        <label for="txtFoto">Foto de perfil:{{empleado.foto}}</label>
-                        <img class="img-thumbnail" with="90" alt="foto de perfil" src="{{url_for('uploads',nombreFoto= empleado.foto)}}">
-                        <input type="file" name="txtFoto" id="txtFoto">
+                        <label for="textFoto">Foto de perfil:</label>
+                        <input type="file" name="textFoto" id="textFoto">
                     </div>
                 </p>
             </card>

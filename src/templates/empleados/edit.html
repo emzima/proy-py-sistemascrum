@@ -1,27 +1,26 @@
 {% include 'header.html' %}
 {% for empleado in empleados %}
-<form method="post" action="/update" enctype="multipart/form-data">
+<form method="POST" action="/update" enctype="multipart/form-data">
     <div class="card">
-        card.<div class="card">
+        <div class="card">
             <div class="card-header">
                 Modificar empleado
             </div>
             <card class="body">
                 <p class="card text">
-                    <input hidden type="text" value={{empleado.id}} name="texID" id="txtID">
+                    <input type="hidden" value="{{empleado.id}}" name="textID" id="textID">
                     <div class="form-group">
-                        <label for="txtNombre">Nombre: </label>
-                        <input type="text" value={{empleado.nombre}} name="texNombre" id="txtNombre">
-                        <input >
+                        <label for="textNombre">Nombre: </label>
+                        <input type="text" value="{{empleado.nombre}}" name="textNombre" id="textNombre">
                     </div>
                     <div class="form-group">
-                        <label for="txtCorreo">Correo electrónico: </label>
-                        <input type="email" value={{empleado.correo}} name="txtCorreo" id="txtCorreo">
+                        <label for="textCorreo">Correo electrónico: </label>
+                        <input type="email" value="{{empleado.correo}}" name="textCorreo" id="textCorreo">
                     </div>
                     <div class="form-group">
-                        <label for="txtFoto">Foto de perfil:{{empleado.foto}}</label>
+                        <label for="textFoto">Foto de perfil:"{{empleado.foto}}"</label>
                         <img class="img-thumbnail" with="90" alt="foto de perfil" src="{{url_for('uploads',nombreFoto= empleado.foto)}}">
-                        <input type="file" name="txtFoto" id="txtFoto">
+                        <input type="file" name="textFoto" id="textFoto">
                     </div>
                 </p>
             </card>

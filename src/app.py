@@ -21,15 +21,13 @@ cursor = conn.cursor(cursor=DictCursor)
 
 @app.route('/userpic/<path:nombreFoto>')
 def uploads(nombreFoto):
-    return send_from_directory(os.path.join('uploads'),nombreFoto)
+    return send_from_directory(os.path.join('uploads/imagenes'),nombreFoto)
 
-CARPETA = os.path.join('src/uploads')
+CARPETA = os.path.join('src/uploads/imagenes')
 app.config['CARPETA'] = CARPETA
 
 @app.route('/')
 def index():
-    
-
     sql = "SELECT * FROM empleados;"
     cursor.execute(sql)
 
@@ -40,10 +38,7 @@ def index():
     return render_template('empleados/index.html', empleados= empleados)
 
 @app.route('/destroy/<int:id>')
-def destroy(id):
-    conn = mysql.connect()
-    cursor = conn.cursor()
-    
+def destroy(id):  
     sql = "DELETE FROM `empleados` WHERE id= %s;"
     datos = id
     cursor.execute(sql, datos)
@@ -58,22 +53,19 @@ def create():
 
 @app.route('/update', methods=["POST"])
 def update():
-    _nombre = request.form("txtNombre")
-    _correo = request.form("txtCorreo")
-    _foto = request.files("txtFoto")
-    id = request.form("txtID")
+    _nombre = request.form["textNombre"]
+    _correo = request.form["textCorreo"]
+    _foto = request.files["textFoto"]
+    id = request.form["textID"]
     
     sql = "UPDATE `empleados` SET `nombre`=%s,`correo`=%s WHERE id=%s;"
     datos = (_nombre ,_correo,id)
     
-    conn = mysql.connect()
-    cursor = conn.cursor()
-
     now = dt.now()
     tiempo = now.strftime("%Y%H%M%S")
     if _foto.filename != '':
         newNombreFoto = tiempo + _foto.filename
-        _foto.save("src/uploads/"+ newNombreFoto)
+        _foto.save("src/uploads/imagenes/"+ newNombreFoto)
         
         sql = "SELECT foto FROM `empleados` WHERE id=%s;"
         datos = id
@@ -95,9 +87,6 @@ def update():
 
 @app.route('/edit/<int:id>')
 def edit(id):
-    conn = mysql.connect()
-    cursor = conn.cursor()
-
     sql = "SELECT * FROM empleados WHERE id=%s;"
     datos = (id)
     cursor.execute(sql, datos)
@@ -110,18 +99,15 @@ def edit(id):
 
 @app.route('/store', methods=["POST"])
 def store():
-    _nombre = request.form("txtNombre")
-    _correo = request.form("txtCorreo")
-    _foto = request.files("txtFoto")
+    _nombre = request.form["textNombre"]
+    _correo = request.form["textCorreo"]
+    _foto = request.files["textFoto"]
     
-    conn = mysql.connect()
-    cursor = conn.cursor()
-
     now = dt.now()
     tiempo = now.strftime("%Y%H%M%S")
     if _foto.filename != '':
         newNombreFoto = tiempo + _foto.filename
-        _foto.save("src/uploads/"+ newNombreFoto)
+        _foto.save("src/uploads/imagenes/"+ newNombreFoto)
     
     sql = "INSERT INTO `empleados` (`id`,`nombre`,`correo`,`foto`) VALUES (NULL, %s, %s, %s);"
     datos = (_nombre ,_correo, newNombreFoto)
