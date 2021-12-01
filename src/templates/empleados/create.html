@@ -9,6 +9,7 @@
                 <p class="card text">
                     <div class="form-group">
                         <label for="txtNombre">Nombre: </label>
+<<<<<<< HEAD
                         <input type="text" name="texNombre" id="txtNombre">
                     </div>
                     <div class="form-group">
@@ -17,6 +18,17 @@
                     </div>
                     <div class="form-group">
                         <label for="txtFoto">Foto de perfil:</label>
+=======
+                        <input type="text" value={{empleado.nombre}} name="texNombre" id="txtNombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtCorreo">Correo electrónico: </label>
+                        <input type="email" value={{empleado.correo}} name="txtCorreo" id="txtCorreo">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtFoto">Foto de perfil:{{empleado.foto}}</label>
+                        <img class="img-thumbnail" with="90" alt="foto de perfil" src="{{url_for('uploads',nombreFoto= empleado.foto)}}">
+>>>>>>> 02-archivo-index-create-edit
                         <input type="file" name="txtFoto" id="txtFoto">
                     </div>
                 </p>
