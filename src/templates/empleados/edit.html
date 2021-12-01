@@ -8,19 +8,19 @@
             </div>
             <card class="body">
                 <p class="card text">
-                    <input hidden type="text" value={{empleado[0]}} name="texID" id="txtID">
+                    <input hidden type="text" value={{empleado.id}} name="texID" id="txtID">
                     <div class="form-group">
                         <label for="txtNombre">Nombre: </label>
-                        <input type="text" value={{empleado[1]}} name="texNombre" id="txtNombre">
+                        <input type="text" value={{empleado.nombre}} name="texNombre" id="txtNombre">
                         <input >
                     </div>
                     <div class="form-group">
                         <label for="txtCorreo">Correo electrónico: </label>
-                        <input type="email" value={{empleado[2]}} name="txtCorreo" id="txtCorreo">
+                        <input type="email" value={{empleado.correo}} name="txtCorreo" id="txtCorreo">
                     </div>
                     <div class="form-group">
-                        <label for="txtFoto">Foto de perfil:{{empleado[3]}}</label>
-                        <img class="img-thumbnail" with="90" alt="foto de perfil" src="{{url_for('uploads',nombreFoto= empleado[3])}}">
+                        <label for="txtFoto">Foto de perfil:{{empleado.foto}}</label>
+                        <img class="img-thumbnail" with="90" alt="foto de perfil" src="{{url_for('uploads',nombreFoto= empleado.foto)}}">
                         <input type="file" name="txtFoto" id="txtFoto">
                     </div>
                 </p>
