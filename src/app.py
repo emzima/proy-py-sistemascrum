@@ -4,6 +4,8 @@ from flaskext.mysql import MySQL
 from datetime import datetime as dt
 import os
 
+from pymysql.cursors import DictCursor
+
 app = Flask(__name__)
 
 mysql = MySQL()
@@ -14,6 +16,8 @@ app.config['MYSQL_DATABASE_PASSWORD'] = '2589cami' #'25&9c4mi'
 app.config['MYSQL_DATABASE_DB'] = 'sistema'
 
 mysql.init_app(app)
+conn = mysql.connect()
+cursor = conn.cursor(cursor=DictCursor)
 
 @app.route('/userpic/<path:nombreFoto>')
 def uploads(nombreFoto):
@@ -24,8 +28,7 @@ app.config['CARPETA'] = CARPETA
 
 @app.route('/')
 def index():
-    conn = mysql.connect()
-    cursor = conn.cursor()
+    
 
     sql = "SELECT * FROM empleados;"
     cursor.execute(sql)
