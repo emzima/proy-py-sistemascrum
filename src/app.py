@@ -39,6 +39,16 @@ def index():
 
 @app.route('/destroy/<int:id>')
 def destroy(id):  
+    sql = "SELECT foto FROM `empleados` WHERE id= %s;"
+    datos = id
+    cursor.execute(sql, datos)
+    
+    try:
+        nombreFoto = cursor.fetchone()[0]
+        os.remove(os.path.join(app.config['CARPETA'], nombreFoto))
+    except:
+        pass
+    
     sql = "DELETE FROM `empleados` WHERE id= %s;"
     datos = id
     cursor.execute(sql, datos)
@@ -72,6 +82,7 @@ def update():
         cursor.execute(sql, datos)
         
         nombreFoto = cursor.fetchone()[0]
+        os.remove(os.path.join(app.config['CARPETA'], nombreFoto))
 
         sql = "UPDATE `empleados` SET foto=%s WHERE id=%s;"
         datos = (newNombreFoto,id)
